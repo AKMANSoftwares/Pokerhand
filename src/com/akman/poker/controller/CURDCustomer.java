@@ -65,12 +65,7 @@ public class CURDCustomer {
                 CustomerID = rs.getInt(1);
             }
 
-            String sql = "INSERT INTO time (CustomerID) VALUES (?)";
-            pst = conn.prepareStatement(sql);
-
-            pst.setInt(1, CustomerID);
-
-            pst.execute();
+            CURDTime.save(CustomerID, conn);
 
             return true;
 
@@ -140,16 +135,21 @@ public class CURDCustomer {
         }
     }
 
-    public static List<Time> select() {
+    public static List<Time> select(String SearchDate) {
         Connection conn = Javaconnect.ConnecrDb();
         PreparedStatement pst = null;
         ResultSet rs = null;
         DateFormat format = new SimpleDateFormat("YYYY-MM-DD HH:MM:SS.SSS");
-
+        
+        String Start = " 00:00:00.000";
+        String END = " 23:59:59.999";
+        
+        String StartDate = SearchDate + Start;
+        String EndDate = SearchDate + END;
         List<Time> timelist = new ArrayList<>();
         try {
 
-            String sql = "Select * from customer C inner join time T on C.CustomerID = T.CustomerID";
+            String sql = "SELECT * FROM customer C INNER JOIN  time T on C.CustomerID =T.CustomerID where TimeIn BETWEEN '"+StartDate+"' AND '"+EndDate+"'";
 
             pst = conn.prepareStatement(sql);
 

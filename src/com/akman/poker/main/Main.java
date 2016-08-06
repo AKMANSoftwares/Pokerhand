@@ -9,12 +9,15 @@ import com.akman.poker.model.Users;
 import com.akman.poker.view.frmAddMembershipType;
 import com.akman.poker.view.frmInvoice;
 import com.akman.poker.view.frmLogin;
+import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
+import javax.swing.JColorChooser;
 import javax.swing.JComponent;
+import javax.swing.JDialog;
 import javax.swing.Painter;
 
 /**
@@ -26,8 +29,8 @@ public class Main extends javax.swing.JFrame {
     /**
      * Creates new form test
      */
-    
     Users user;
+
     public Main() {
 
         initComponents();
@@ -81,6 +84,7 @@ public class Main extends javax.swing.JFrame {
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
@@ -170,7 +174,6 @@ public class Main extends javax.swing.JFrame {
         jMenuBar1.add(jMenu1);
 
         menuSettings.setText("Settings");
-        menuSettings.setEnabled(false);
 
         jMenuItem5.setText("User Managment");
         jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
@@ -195,6 +198,14 @@ public class Main extends javax.swing.JFrame {
             }
         });
         menuSettings.add(jMenuItem2);
+
+        jMenuItem4.setText("Header Color");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
+        menuSettings.add(jMenuItem4);
 
         jMenuItem3.setText("Database Connection");
         menuSettings.add(jMenuItem3);
@@ -256,19 +267,19 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void menuLogOffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuLogOffActionPerformed
-        frmLogin login  = new frmLogin();
+        frmLogin login = new frmLogin();
         login.setVisible(true);
         dispose();
     }//GEN-LAST:event_menuLogOffActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-       // frmEmailTemplete em = new frmEmailTemplete();
+        // frmEmailTemplete em = new frmEmailTemplete();
         //em.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-       // frmEmailTemplete1 em = new frmEmailTemplete1();
-       // em.setVisible(true);
+        // frmEmailTemplete1 em = new frmEmailTemplete1();
+        // em.setVisible(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
@@ -286,6 +297,13 @@ public class Main extends javax.swing.JFrame {
         invoice.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        JColorChooser chosser = new JColorChooser();
+        JDialog co = JColorChooser.createDialog(null, "Pick the color", false, chosser, null, null);
+        chosser.setColor(Color.yellow);
+        co.setVisible(true);
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
     public static void main(String[] args) {
         Main main = new Main();
         main.setVisible(true);
@@ -301,6 +319,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem8;

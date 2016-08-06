@@ -59,6 +59,26 @@ public class CURDTime {
 
     }
 
+    public static void save(int CustomerID, Connection conn) {
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+
+        try {
+            String sql = "INSERT INTO time (CustomerID) VALUES (?)";
+            pst = conn.prepareStatement(sql);
+
+            pst.setInt(1, CustomerID);
+
+            pst.execute();
+        } catch (Exception e) {
+            Logger.getLogger(CURDTime.class.getName()).log(Level.SEVERE, null, e);
+        } finally {
+
+            DbUtils.closeQuietly(pst);
+
+        }
+    }
+
     public static void UpdateStartTime(Time time) {
 
         Connection conn = Javaconnect.ConnecrDb();
